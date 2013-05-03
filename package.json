@@ -1,5 +1,6 @@
 {
     "dependencies": {
-        "request": "*"
+        "node-github": "*",
+        "prompt": "*"
     }
 }

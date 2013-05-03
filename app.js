@@ -1,12 +1,11 @@
 var g = require("node-github");
-
 var prompt = require('prompt');
 
 var properties = [
     {
         name: 'username', 
         validator: /^[a-zA-Z\.\-]+$/,
-        warning: 'Username must be only letters, spaces, or dashes'
+        warning: 'Username must be only letters, dots, or dashes'
     },
     {
         name: 'password',
@@ -18,7 +17,7 @@ prompt.start();
 
 prompt.get(properties, function (err, result) {
     if (err) { return onErr(err); }
-    setup(result.username, result.password);
+    setupHook(result.username, result.password);
     console.log("done");
 });
 
@@ -27,7 +26,7 @@ function onErr(err) {
     return 1;
 }
 
-function setup(username, password){
+function setupHook(username, password){
     var github = new g({
          version: "3.0.0",
          timeout: 5000
